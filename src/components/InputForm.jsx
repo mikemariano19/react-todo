@@ -1,12 +1,28 @@
-import React from 'react'
-import { PlusIcon } from '@heroicons/react/20/solid'
+import React, { useState } from 'react'
+import { PlusIcon } from '@heroicons/react/24/outline'
 
-const InputForm = () => {
+
+
+
+const InputForm = ({ addTask }) => {
+      const [task, setTask] = useState('');
+
+      const handleFormSubmit = (e) => {
+        e.preventDefault();
+        addTask({
+          name: task,
+          checked: false,
+          id: Date.now()
+        })
+        setTask('')
+      }
+  
+
+
   return (
-    
-      <form className="text-xl grid grid-cols-6 gap-2 px-2 pb-2">
+      <form className="text-xl grid grid-cols-6 gap-2 px-2 pb-2" onSubmit={handleFormSubmit}>
         <input type="text" placeholder="Add ToDo" className="border-solid bg-gray border border-slate-300 rounded-md  md:py-2 pl-4 shadow-sm col-span-5" />
-        <button type="submit" className="btn btn-primary bg-blue-500 hover:bg-blue-600 p-4 rounded-md text-white flex justify-center" >
+        <button type="submit" aria-label='Add Task' className="border border-red-300 text-red-300 hover:border-red-500 p-4 rounded-md flex justify-center" >
           <PlusIcon class="h-8 w-8" />
         </button>
       </form>
