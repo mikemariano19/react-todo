@@ -1,14 +1,21 @@
 import React from "react";
 import TaskItem from "./TaskItem";
 
-function TaskList({ task }) {
+function TaskList({ tasks, deleteTask, toggleTask, enterEditMode }) {
   return (
-    <div>
-      <TaskItem
-        key={task.id}
-        task={task}
+    <ul>
+      {tasks.sort((a, b) => b.id - a.id).map(task => (
+        <TaskItem
+          key={task.id}
+          task={task}
+          deleteTask={deleteTask}
+          toggleTask={toggleTask}
+          enterEditMode={enterEditMode}
       />
-    </div>
+      ))
+      }
+    </ul>
+    
   )
 }
 
