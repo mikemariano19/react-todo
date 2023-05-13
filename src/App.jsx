@@ -4,10 +4,11 @@ import EditForm from './components/EditForm'
 import TaskList from './components/TaskList'
 
 import './index.css'
+import useLocalStorage from './hooks/useLocalStorage'
 
 function App() {
 
-  const [tasks, setTasks] = useState([]);
+  const [tasks, setTasks] = useLocalStorage('react-todo.tasks', []);
   const [editedTask, setEditedTask] = useState(null);
   const [isEditting, setIsEditting] = useState(false);
   const [previousFocusEl, setPreviousFocusEl] = useState(false)
@@ -52,26 +53,31 @@ function App() {
 
 
   return (
-      <div className="max-w-3xl mx-auto">
+      <div className="h-screen w-full bg-gray-100 text-gray-800">
         <header className="flex justify-center text-4xl py-4">Todo List</header>
-        {
-          isEditting && (
-            <EditForm 
-              editedTask={editedTask}
-              updateTask={updateTask}
-              closeEditMode={closeEditMode}
-            />
-          )
-        }
+        
+       <div className='max-w-3xl mx-auto'>
         <InputForm addTask={addTask} />
-        {tasks && (
-          <TaskList
-            tasks={tasks}
-            deleteTask={deleteTask}
-            toggleTasks={toggleTasks}
-            enterEditMode={enterEditMode}
-          />
-        )}
+          {tasks && (
+            <TaskList
+              tasks={tasks}
+              deleteTask={deleteTask}
+              toggleTasks={toggleTasks}
+              enterEditMode={enterEditMode}
+            />
+          )}
+
+  {/* EditMode */}
+          {
+            isEditting && (
+              <EditForm className="bg-red-500"
+                editedTask={editedTask}
+                updateTask={updateTask}
+                closeEditMode={closeEditMode}
+              />
+            )
+          }
+       </div>
       </div>
   )
 }

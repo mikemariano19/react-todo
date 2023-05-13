@@ -12,7 +12,7 @@ const InputForm = ({ addTask }) => {
         addTask({
           name: task,
           checked: false,
-          id: Date.now()
+          id: Date.now(),
         })
         setTask('')
       }
@@ -28,12 +28,12 @@ const InputForm = ({ addTask }) => {
           type="text" 
           placeholder="Enter Task" 
           id="task"
-          className="border-solid bg-gray border border-slate-300 rounded-md  md:py-2 pl-4 shadow-sm col-span-5"
+          className="border-solid bg-gray border border-slate-300 rounded-md  md:py-2 pl-4 shadow-sm col-span-5 uppercase"
           value={task}
           onInput={(e) => setTask(e.target.value)}
           required
           autoFocus
-          maxLength={60}
+          maxLength={45}
         />
           <button 
             type="submit" 

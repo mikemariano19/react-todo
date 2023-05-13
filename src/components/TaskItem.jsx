@@ -1,5 +1,5 @@
 import { PencilIcon, TrashIcon } from '@heroicons/react/24/outline';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const TaskItem = ({ task, deleteTask, toggleTask, enterEditMode }) => {
   const [isChecked, setIsChecked] = useState(task.checked);
@@ -9,9 +9,12 @@ const TaskItem = ({ task, deleteTask, toggleTask, enterEditMode }) => {
     toggleTask(task.id)
   }
 
+  useEffect(()=>{
+    
+  })
 
   return (
-    <div className="p-2 mt-2 text-2xl">
+    <div className="p-2 mt-2 text-2xl uppercase">
         <div className="border-b-2 flex justify-between">
             <div>
               <input

@@ -26,43 +26,50 @@ const EditForm = ({ editedTask, updateTask, closeEditMode }) => {
 
 
   return (
-      <div
-        role='dialog'
-        aria-labelledby='editTask'
-        onClick={(e) => {e.target === e.currentTarget && closeEditMode()}}
-        className=''
+      <div className='fixed inset-0 z-50 flex items-center bg-gray-800/50'
+          role='dialog'
+          aria-labelledby='editTask'
+          onClick={(e) => {e.target === e.currentTarget && closeEditMode()}}
       >
-        <form 
-        className="text-xl grid grid-cols-6 gap-2 px-2 pb-2 bg-red-300" 
-        onSubmit={handleFormSubmit}
-        >
-        <div>
-          <input 
-            type="text" 
-            placeholder="Update Task" 
-            id="editTask"
-            className="border-solid bg-gray border border-slate-300 rounded-md  md:py-2 pl-4 shadow-sm col-span-5"
-            value={updatedTaskName}
-            onInput={(e) => setUpdatedTaskName(e.target.value)}
-            required
-            autoFocus
-            maxLength={60}
-          />
+          <div
+          className='flex justify-center rounded items-center drop-shadow-2xl m-auto bg-[#1E293B]/75 w-[600px] h-[350px]'
+          >
+          <form 
+          className="text-3xl px-4" 
+          onSubmit={handleFormSubmit}
+          >
+          <div className='grid grid-cols-6 gap-2'>
           <label 
-          htmlFor="editTask"
-          >
-            Update Task
-          </label>
+            htmlFor="editTask"
+            className='text-gray-100 col-span-6'
+            >
+              Update Task
+            </label>
+            <input 
+              type="text" 
+              placeholder="Update Task" 
+              id="editTask"
+              className="border-solid bg-gray border border-slate-300 rounded-md h-20 w-full  md:py-2 pl-4 shadow-sm col-span-6 md:col-span-5 uppercase"
+              value={updatedTaskName}
+              onInput={(e) => setUpdatedTaskName(e.target.value)}
+              required
+              autoFocus
+              maxLength={60}
+            />
+            
+          
+            <button 
+              type="submit" 
+              aria-label={`Confirm edited task to now read ${updatedTaskName}`} 
+              className="bg-blue-500 w-full text-white hover:border-red-500 w-20 h-20 p-8 rounded-md flex justify-center col-span-6 md:col-span-1 flex items-center"
+            >
+              <CheckIcon class="h-8 w-8" />
+            </button>
+          </div>
+          </form>
         </div>
-          <button 
-            type="submit" 
-            aria-label={`Confirm edited task to now read ${updatedTaskName}`} 
-            className="border border-red-300 text-red-300 hover:border-red-500 p-1 rounded-md flex justify-center"
-          >
-          <CheckIcon class="h-8 w-8" />
-         </button>
-        </form>
       </div>
+      
   )
 }
 
