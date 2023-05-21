@@ -1,5 +1,7 @@
 import { PencilIcon, TrashIcon } from '@heroicons/react/24/outline';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
+
+import styles from './TaskItem.module.css';
 
 const TaskItem = ({ task, deleteTask, toggleTask, enterEditMode }) => {
   const [isChecked, setIsChecked] = useState(task.checked);
@@ -9,23 +11,22 @@ const TaskItem = ({ task, deleteTask, toggleTask, enterEditMode }) => {
     toggleTask(task.id)
   }
 
-  useEffect(()=>{
-    
-  })
-
+  
+  
   return (
     <div className="p-2 mt-2 text-2xl uppercase">
         <div className="border-b-2 flex justify-between">
-            <div>
+            <div className='flex items-center'>
               <input
                 type="checkbox"
                 checked={isChecked}
                 onChange={handleCheckBoxChange}
                 name={task.name} 
                 id={task.id} 
-                className="ml-2 mr-4" 
+                className={styles.checkbox} 
               />
               <label
+                className='pl-4'
                 htmlFor={task.id}
               >
                 {task.name}

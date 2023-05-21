@@ -54,7 +54,7 @@ function App() {
 
   return (
       <div className="h-screen w-full bg-gray-100 text-gray-800">
-        <header className="flex justify-center text-4xl py-4">Todo List</header>
+        <header className="flex justify-center text-4xl py-4">Todo Listssss</header>
         
        <div className='max-w-3xl mx-auto'>
         <InputForm addTask={addTask} />
