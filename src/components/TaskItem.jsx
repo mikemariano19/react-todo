@@ -16,13 +16,13 @@ const TaskItem = ({ task, deleteTask, toggleTask, enterEditMode }) => {
   return (
     <div className="p-2 mt-2 text-2xl uppercase">
         <div className="border-b-2 flex justify-between">
-            <div className='flex items-center'>
+            <div className='flex items-center pointer'>
               <input
                 type="checkbox"
                 checked={isChecked}
                 onChange={handleCheckBoxChange}
                 name={task.name} 
-                id={task.id} 
+                id={task.id} s
                 className={styles.checkbox} 
               />
               <label
